@@ -18,6 +18,7 @@ import Events from 'src/containers/Events';
 import Cgu from 'src/components/Cgu';
 import MentionsLegales from 'src/components/MentionsLegales';
 import QuiSommesNous from 'src/components/QuiSommesNous';
+import Unsubscribe from '../Unsubscribe';
 
 // == App component
 const App = ({ fetchPlants }) => {
@@ -46,6 +47,10 @@ const App = ({ fetchPlants }) => {
 
         <Route path="/inscription" exact>
           <SignUp />
+        </Route>
+
+        <Route path="/desinscription" exact>
+          <Unsubscribe />
         </Route>
 
         <Route path="/evenements" exact>

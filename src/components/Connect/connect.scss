@@ -7,9 +7,11 @@
     border-radius: 2em;
     padding-top: 1em;
     padding-bottom: 1em;
-    width: 70%;
+    max-width: 450px;
+    width: 90%;
     margin: auto;
     flex-direction: column;
+    position: relative;
 
     .connect-submit {
       color: #fff;
@@ -48,56 +50,9 @@
         color: vars.$black;
       }
   }
-}
-
-@media(max-width:600px) {
-  .connect {
-
-    .connect-form {
-      background-color: vars.$green;
-      border-radius: 2em;
-      padding-top: 1em;
-      padding-bottom: 1em;
-      width: 90%;
-      margin: auto;
-      flex-direction: column;
-  
-      .connect-submit {
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 1rem;
-        margin: 1rem;
-        font-size: 1.2em;
-        background-color: vars.$lightOrange;
-        width: 10em;
-  
-        &:hover {
-          color: vars.$black;
-          border: vars.$black solid 1px;
-          background-color: transparent;
-        }
-      }
-  
-      .register-submit {
-        color: vars.$black;
-        border: vars.$black solid 1px;
-        border-radius: 5px;
-        padding: 1rem;
-        margin: 1rem;
-        font-size: 1.2em;
-        background-color: transparent;
-        width: 10em;
-  
-        &:hover {
-          color: #fff;
-          border: none;
-          background-color: vars.$lightOrange;
-        }
-      }
-        a {
-          color: vars.$black;
-        }
-    }
+  .settings {
+    position: absolute;
+    right: 0.5em;
+    bottom: 0.5em;
   }
 }

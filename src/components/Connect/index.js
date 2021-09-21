@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 import UserCalendar from 'src/containers/UserCalendar';
 import './connect.scss';
+import { Settings } from 'react-feather';
 
 const Connect = ({
   userName,
@@ -54,6 +55,11 @@ const Connect = ({
           >
             <a href="/inscription" className="register-link">S'inscrire</a>
           </button>
+          <div className="settings">
+            <a href="/desinscription" className="unsubscribe-link">
+              <Settings />
+            </a>
+          </div>
         </form>
       )
       : <UserCalendar />}
