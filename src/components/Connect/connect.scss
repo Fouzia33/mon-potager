@@ -11,7 +11,7 @@
     width: 90%;
     margin: auto;
     flex-direction: column;
-    position: relative;
+    
 
     .connect-submit {
       color: #fff;
@@ -49,10 +49,5 @@
       a {
         color: vars.$black;
       }
-  }
-  .settings {
-    position: absolute;
-    right: 0.5em;
-    bottom: 0.5em;
   }
 }

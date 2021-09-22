@@ -8,6 +8,8 @@ export const LOG_OUT = 'LOG_OUT';
 export const UPDATE_SIGNUP_FIELD = 'UPDATE_SIGNUP_FIELD';
 export const SUBMIT_REGISTER = 'SUBMIT_REGISTER';
 export const SAVE_USER_REGISTER = 'SAVE_USER_REGISTER';
+// function for unsubscribe
+export const DELETE_SUBMIT = 'DELETE_SUBMIT';
 
 // === action creators
 export const updateConnectField = (name, newValue) => ({
@@ -46,4 +48,8 @@ export const saveUserRegister = (token, nickname, isSigned) => ({
   token: token,
   nickname: nickname,
   signed: isSigned,
+});
+
+export const deleteSubmit = () => ({
+  type: DELETE_SUBMIT,
 });
