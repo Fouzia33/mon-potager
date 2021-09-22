@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Field from 'src/components/Field';
 import UserCalendar from 'src/containers/UserCalendar';
@@ -19,7 +20,6 @@ const Connect = ({
           className="connect-form"
           onSubmit={(event) => {
             event.preventDefault();
-            // console.log('soumission du formulaire');
             handleSubmit();
           }}
         >
@@ -52,16 +52,15 @@ const Connect = ({
             type="button"
             className="register-submit"
           >
-            <a href="/inscription" className="register-link">S'inscrire</a>
+            <Link to="/inscription" className="register-link">S'inscrire</Link>
           </button>
         </form>
       )
       : <UserCalendar />}
-
   </div>
 );
+
 Connect.propTypes = {
-  //  futur propTypes
   userName: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   changeFieldValue: PropTypes.func.isRequired,

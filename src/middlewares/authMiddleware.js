@@ -5,9 +5,17 @@ import {
   saveUserData,
   SUBMIT_REGISTER,
   saveUserRegister,
+  DELETE_SUBMIT,
+  logOut,
 } from '../actions/auth';
+
 import {
-  FETCH_USER_PLANTS, ADD_PLANT, saveUserPlants, saveNewPlant, DELETE_PLANT, plantToDelete,
+  FETCH_USER_PLANTS,
+  ADD_PLANT,
+  saveUserPlants,
+  saveNewPlant,
+  DELETE_PLANT,
+  plantToDelete,
 } from '../actions/userCalendar';
 
 const authMiddleware = (store) => (next) => (action) => {
@@ -147,6 +155,23 @@ const authMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log('error inscription', error);
+        });
+      break;
+    }
+    case DELETE_SUBMIT: {
+      axios.get(
+        'http://ec2-54-89-4-11.compute-1.amazonaws.com/projet-mon-potager-back/public/wp-json/monpotager/v1/user-delete',
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().auth.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          store.dispatch(logOut());
+        })
+        .catch((error) => {
+          console.log(error);
         });
       break;
     }

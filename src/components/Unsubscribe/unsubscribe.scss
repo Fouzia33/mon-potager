@@ -1,0 +1,16 @@
+@use 'src/styles/vars';
+
+.unsubscribe {
+  padding: 10px;
+  .unsubscribe__btn {
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: auto;
+  font-size: 1.2em;
+  background-color: vars.$lightOrange;
+  width: 10em;
+}
+}
+

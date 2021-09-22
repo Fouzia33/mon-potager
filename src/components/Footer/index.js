@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import './footer.scss';
 import { Icon } from 'semantic-ui-react';
+import { Settings } from 'react-feather';
 
 const Footer = ({ selected }) => (
   // footer menu
@@ -31,6 +32,13 @@ const Footer = ({ selected }) => (
         exact
       >
         Qui sommes-nous?
+      </NavLink>
+      <NavLink
+        to="/desinscription"
+        activeClassName="settings"
+        exact
+      >
+        <Settings size="15px" />
       </NavLink>
     </div>
 
