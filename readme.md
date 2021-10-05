@@ -3,7 +3,7 @@ Mon potager
 
 Bienvenue dans notre application Mon potager !
 Vous avez toujours voulu commencer un potager, mais vous ne saviez pas quoi choisir, quand le débuter et comment procéder?
-C'est application va vous aider...
+Cette application va vous aider...
 
 En tant que visiteur, vous aurez accès à un calendrier en fonction de la région sélectionnée, avec les plantes qu'il sera possible de semer, de planter ou de récolter!
 
