@@ -64,7 +64,7 @@ const PlantsList = ({ plants, getPlantsList, loading }) => {
                       Récolte: {harvest}
                     </p>
                   )}
-
+                  <h4 className="description">Description</h4>
                   <p dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
                 </div>
               </div>
