@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import './mentionsLegales.scss';
 import jovial from 'src/assets/images/jovial.png';
@@ -9,44 +10,37 @@ const MentionsLegales = () => (
       En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site       internet http://mon-potager.surge.sh/ l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi:
       <br />
       Propriétaire du site : Claudia, Fouzia, Jonathan, Mathieu et Paul,
-      Contact : jardinons@olive.fr 0557898372
+      Contact : fouzia.hollande@gmail.com 0671834673
       Adresse : chemin du radis
-      33000 BORD'EAU.
+      33000 BORDEAUX
       <br />
       Mon Potager
       Adresse postale : chemin du radis
-      33000 BORD'EAU.
+      33000 BORDEAUX
       <br />
       Hébergeur : https://surge.sh/
       <br />
       Autres contributeurs : O'clock
       <br />
-      <a href="https://www.stephanie-jovial.fr/">Designer grahiste : Stéphanie Jovial</a>
+      <a href="https://www.stephanie-jovial.fr/">Designer graphiste : Stéphanie Jovial</a>
 
     </p>
     <h2>2 - Limitations de responsabilité.</h2>
     <p>
-      Claudia,Fouzia,Jonathan,Mathieu et Paul
-      ne pourront être tenu pour responsable des dommages directs et indirects causés au matériel de l’utilisateur, lors de l’accès au site http://mon-potager.surge.sh/.
+      Claudia, Fouzia, Jonathan, Mathieu et Paul ne pourront être tenus pour responsables des dommages directs et indirects causés au matériel de l’utilisateur, lors de l’accès au site http://mon-potager.surge.sh/.
     </p>
     <p>
-      Claudia,Fouzia,Jonathan,Mathieu et Paul déclinent toute responsabilité quant à l’utilisation qui pourrait être faite des informations et contenus présents sur http://mon-potager.surge.sh/.
+      Claudia, Fouzia, Jonathan, Mathieu et Paul déclinent toutes responsabilités quant à l’utilisation qui pourrait être faite des informations et contenus présents sur http://mon-potager.surge.sh/.
     </p>
     <p>
-      Claudia,Fouzia,Jonathan,Mathieu et Paul s’engagent à sécuriser au mieux le site http://mon-potager.surge.sh/, cependant sa responsabilité ne pourra être mise en cause si des données indésirables sont importées et installées sur son site à son insu.
+      Claudia, Fouzia, Jonathan, Mathieu et Paul s’engagent à sécuriser au mieux le site http://mon-potager.surge.sh/, cependant leur responsabilité ne pourra être mise en cause si des données indésirables sont importées et installées sur leur site à leur insu.
     </p>
     <p>
       Des espaces interactifs (espace contact ou commentaires) sont à la disposition des utilisateurs.
-      Claudia,Fouzia,Jonathan,Mathieu et Paul se réservent le droit de supprimer,
-      sans mise en demeure préalable, tout contenu déposé dans cet espace
-      qui contreviendrait à la législation applicable en France,
-      en particulier aux dispositions relatives à la protection des données.
+      Claudia, Fouzia, Jonathan, Mathieu et Paul se réservent le droit de supprimer, sans mise en demeure préalable, tout contenu déposé dans cet espace qui contreviendrait à la législation applicable en France, en particulier aux dispositions relatives à la protection des données.
     </p>
     <p>
-      Le cas échéant, Claudia,Fouzia,Jonathan,Mathieu et Paul se réservent également
-      la possibilité de mettre en cause la responsabilité civile et/ou pénale de l’utilisateur,
-      notamment en cas de message à caractère raciste, injurieux, diffamant, ou pornographique,
-      quel que soit le support utilisé (texte, photographie …).
+      Le cas échéant, Claudia, Fouzia, Jonathan, Mathieu et Paul se réservent également la possibilité de mettre en cause la responsabilité civile et/ou pénale de l’utilisateur, notamment en cas de message à caractère raciste, injurieux, diffamant, ou pornographique, quel que soit le support utilisé (texte, photographie …).
     </p>
     <h2>3 - CNIL et gestion des données personnelles.</h2>
     <p>

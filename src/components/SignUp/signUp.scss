@@ -11,6 +11,12 @@
     margin: auto;
     flex-direction: column;
     display: flex;
+
+    .champ {
+      font-size: 0.80em;
+      text-align: right;
+      padding-right: 1em;
+    }
    
     .error {
       font-size: 0.80em;
