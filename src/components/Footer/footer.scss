@@ -25,12 +25,10 @@
 
     &--active {
       color: vars.$orange;
-      transform:scale(1.25)
     }
 
     &:hover {
       color: vars.$orange;
-      // transform:scale(1.25)
       font-size: 20px;
     }
   }

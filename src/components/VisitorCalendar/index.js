@@ -1,6 +1,10 @@
 import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
+
+// == import components and containers
 import PlantsListByRegion from 'src/containers/PlantsListByRegion';
+import Loader from 'src/components/Loader';
+
 // == import externals libraries
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-calendar/dist/tui-calendar.css';
@@ -10,6 +14,7 @@ import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
 import { ChevronLeft, ChevronRight } from 'react-feather';
+
 // picture for legend
 import semer from 'src/assets/images/semer.png';
 import planter from 'src/assets/images/planter.png';
@@ -36,13 +41,11 @@ const VisitorCalendar = ({
   getPlantsList,
   getSelectedRegion,
   selectedRegion,
+  loading,
 }) => {
-  // TODO peut-être mettre un loader le temps que ça charge - peut être pas la peine en prode
-  // console.log(plantsSchedules);
-  // == ref to calendar to get instance
+  // == ref to current calendar to get instance and use buttons prev month, next month and today
   const calendarRef = createRef();
-
-  // == get current date to display on the top of calendar
+  // == current date to display on the top of calendar
   // == today's date
   const currentDate = new Date();
   // == Format the date to see just month and year, and change timezone to Paris
@@ -53,11 +56,14 @@ const VisitorCalendar = ({
   });
 
   // == functions to dynamise buttons today prev and next month
-  // == and display date on the top of calendar
   const handleClickTodayButton = () => {
     const calendarInstance = calendarRef.current.calendarInst;
+
+    // == today() is a Toast Ui Calendar method to come back today
     calendarInstance.today();
+
     const getDate = document.querySelector('.visitorCalendar-currentMonth');
+
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
       timeZone: 'Europe/Paris',
@@ -68,8 +74,12 @@ const VisitorCalendar = ({
 
   const handleClickPrevButton = () => {
     const calendarInstance = calendarRef.current.calendarInst;
+
+    // == prev() is a Toast Ui Calendar method to go to prev month
     calendarInstance.prev();
+
     const getDate = document.querySelector('.visitorCalendar-currentMonth');
+
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
       timeZone: 'Europe/Paris',
@@ -80,8 +90,12 @@ const VisitorCalendar = ({
 
   const handleClickNextButton = () => {
     const calendarInstance = calendarRef.current.calendarInst;
+
+    // == next() is a Toast Ui Calendar method to go to next month
     calendarInstance.next();
+
     const getDate = document.querySelector('.visitorCalendar-currentMonth');
+
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
       timeZone: 'Europe/Paris',
@@ -91,11 +105,16 @@ const VisitorCalendar = ({
   };
 
   // == function to display plants by region
-  // == (change isVisible on true if value of option === calendarId)
   const handleOptionSelect = (evt) => {
+    // == selected become true and display calendar and make select region invisible
     displayPlants();
+
     const getOptionValue = evt.target.value;
+
+    // get selected region and sent it to reducer
     getSelectedRegion(getOptionValue);
+
+    // == isVisible allows to display plants by selected region
     // eslint-disable-next-line array-callback-return
     plantsSchedules.map((item) => {
       if (item.calendarId === getOptionValue) {
@@ -105,8 +124,6 @@ const VisitorCalendar = ({
         item.isVisible = false;
       }
     });
-    // TODO NE SERT A RIEN ?
-    // changeIsVisible(plantsSchedules);
   };
 
   return (
@@ -139,6 +156,7 @@ const VisitorCalendar = ({
           <option className="option" value="17">Pays de la Loire</option>
           <option className="option" value="18">Provence-Alpes-Côte d'Azur</option>
         </select>
+        {loading && <Loader />}
         {selected && (
           <>
             <div className="toggle">
@@ -190,9 +208,9 @@ const VisitorCalendar = ({
                   </div>
 
                   <Calendar
-                    // == I put key here for new render
+                    // ==key for new render
                     key={selectedRegion}
-                    // == ref to current calendar ?
+                    // == ref to current calendar
                     ref={calendarRef}
                     // == view monthly
                     view={view}
@@ -213,7 +231,6 @@ const VisitorCalendar = ({
                 </>
               )
               : (
-                // <p>Travail en cours</p>
                 <PlantsListByRegion
                   plantsSchedules={plantsSchedules}
                   getPlantsList={getPlantsList}
@@ -221,7 +238,6 @@ const VisitorCalendar = ({
               )}
           </>
         )}
-
       </div>
     </>
   );
@@ -242,6 +258,7 @@ VisitorCalendar.propTypes = {
   plantsCalendars: PropTypes.array.isRequired,
   getSelectedRegion: PropTypes.func.isRequired,
   selectedRegion: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 // == Export

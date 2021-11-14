@@ -1,6 +1,7 @@
 import {
   UPDATE_SIGNUP_FIELD,
   SAVE_USER_REGISTER,
+  LOG_OUT,
 } from 'src/actions/auth';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   signed: false,
   nickname: null,
   token: null,
+  logged: false,
 };
 
 function registerReducer(state = initialState, action = {}) {
@@ -28,6 +30,16 @@ function registerReducer(state = initialState, action = {}) {
         signed: true,
         token: action.token,
         nickname: action.nickname,
+      };
+
+    case LOG_OUT:
+      return {
+        ...state,
+        username: '',
+        password: '',
+        logged: false,
+        nickname: null,
+        token: null,
       };
 
     default:

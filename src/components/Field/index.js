@@ -13,13 +13,10 @@ const Field = ({
   type,
   value,
   changeField,
+
 }) => {
   const handleChange = (event) => {
     const { value: inputValue, name } = event.target;
-    // c'est équivalent à :
-    // const inputValue = event.target.value;
-    // const { name } = event.target;
-
     changeField(name, inputValue);
   };
 
@@ -34,6 +31,7 @@ const Field = ({
         value={value}
         onChange={handleChange}
         required
+        minLength="3"
       />
       <label
         className="label"

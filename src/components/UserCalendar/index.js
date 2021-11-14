@@ -20,7 +20,6 @@ import recolter from 'src/assets/images/recolter.png';
 import './userCalendar.scss';
 
 // == UserCalendar Component
-// == props from initial state userCalendarReducer
 const UserCalendar = ({
   view,
   daynames,
@@ -30,24 +29,19 @@ const UserCalendar = ({
   isReadOnly,
   plantsCalendars,
   fetchUserPlants,
-  // plant, maybe prop to not use
   newPlant,
   addPlant,
   deletePlant,
-  plantSelected,
   selectPlant,
-  plantToRemove,
 }) => {
-  // == ref to calendar to get instance
+  // == ref to current calendar :
+  // == use calendarRef to get instance and to change month et come back today
   const calendarRef = createRef();
 
-  // TODO dependance userPlants ?
   useEffect(() => {
     fetchUserPlants();
   }, []);
-  // console.log('userPlants dans le component', userPlants);
 
-  // == get current date to display on the top of calendar
   // == today's date
   const currentDate = new Date();
   // == Format the date to see just month and year, and change timezone to Paris
@@ -58,11 +52,14 @@ const UserCalendar = ({
   });
 
   // == functions to dynamise buttons today prev and next month
-  // == and display date on the top of calendar
   const handleClickTodayButton = () => {
     const calendarInstance = calendarRef.current.calendarInst;
+
+    // == today() is a Toast Ui Calendar Method
     calendarInstance.today();
+
     const getDate = document.querySelector('.userCalendar-currentMonth');
+
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
       timeZone: 'Europe/Paris',
@@ -73,8 +70,12 @@ const UserCalendar = ({
 
   const handleClickPrevButton = () => {
     const calendarInstance = calendarRef.current.calendarInst;
+
+    // == prev() is a Toast Ui Calendar Method
     calendarInstance.prev();
+  
     const getDate = document.querySelector('.userCalendar-currentMonth');
+
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
       timeZone: 'Europe/Paris',
@@ -85,8 +86,12 @@ const UserCalendar = ({
 
   const handleClickNextButton = () => {
     const calendarInstance = calendarRef.current.calendarInst;
+
+    // == prev() is a Toast Ui Calendar Method
     calendarInstance.next();
+
     const getDate = document.querySelector('.userCalendar-currentMonth');
+
     // eslint-disable-next-line no-underscore-dangle
     getDate.textContent = calendarInstance._renderDate._date.toLocaleString('fr-FR', {
       timeZone: 'Europe/Paris',
@@ -95,32 +100,28 @@ const UserCalendar = ({
     });
   };
 
+  // == this method will become a prop in Calendar component
+  // == method to get plant schedule on click
   const onClickSchedule = useCallback((e) => {
-    // const { calendarId, id } = e.schedule;
-    // const el = calendarRef.current.calendarInst.getElement(id, calendarId);
-    // console.log(e, el.getBoundingClientRect());
-    console.log('component e.schedule', e.schedule);
+    // == plant selected on click, sent to reducer
     selectPlant(e.schedule);
   }, []);
 
+  // == this method will become a prop in Calendar component
+  // == method to create plant schedule
   const onBeforeCreateSchedule = useCallback((scheduleData) => {
-    // console.log(scheduleData);
     let schedule = {};
+    
     if (scheduleData.calendarId === '1') {
       schedule = {
         id: String(Math.random()),
         calendarId: '1',
         title: scheduleData.title,
-        isAllDay: scheduleData.isAllDay,
         start: scheduleData.start,
         end: scheduleData.end,
-        category: scheduleData.isAllDay ? 'allday' : 'time',
-        dueDateClass: '',
-        location: scheduleData.location,
         raw: {
-          class: scheduleData.raw['class'],
+          class: scheduleData.raw.class,
         },
-        state: scheduleData.state,
         color: '#474647',
         bgColor: '#f3c465',
         dragBgColor: '#daece5',
@@ -132,16 +133,11 @@ const UserCalendar = ({
         id: String(Math.random()),
         calendarId: '2',
         title: scheduleData.title,
-        isAllDay: scheduleData.isAllDay,
         start: scheduleData.start,
         end: scheduleData.end,
-        category: scheduleData.isAllDay ? 'allday' : 'time',
-        dueDateClass: '',
-        location: scheduleData.location,
         raw: {
-          class: scheduleData.raw['class'],
+          class: scheduleData.raw.class,
         },
-        state: scheduleData.state,
         color: '#474647',
         bgColor: '#f46d5f',
         dragBgColor: '#daece5',
@@ -153,24 +149,18 @@ const UserCalendar = ({
         id: String(Math.random()),
         calendarId: '3',
         title: scheduleData.title,
-        isAllDay: scheduleData.isAllDay,
         start: scheduleData.start,
         end: scheduleData.end,
-        category: scheduleData.isAllDay ? 'allday' : 'time',
-        dueDateClass: '',
-        location: scheduleData.location,
         raw: {
-          class: scheduleData.raw['class'],
+          class: scheduleData.raw.class,
         },
-        state: scheduleData.state,
         color: '#474647',
         bgColor: '#9ed2bf',
         dragBgColor: '#daece5',
         borderColor: '#daece5',
       };
     }
-    // calendarRef.current.calendarInst.createSchedules([schedule]);
-    // console.log('schedule component', schedule);
+
     // == auto calendar harvest if schedule.calendarId === 1 || === 2
     const scheduleDateStart = new Date(schedule.start);
     scheduleDateStart.setMonth(scheduleDateStart.getMonth() + 1);
@@ -183,49 +173,43 @@ const UserCalendar = ({
         id: String(Math.random()),
         calendarId: '3',
         title: schedule.title,
-        isAllDay: schedule.isAllDay,
         start: { dates: scheduleDateStart },
         end: { dates: scheduleDateEnd },
-        category: schedule.isAllDay ? 'allday' : 'time',
-        dueDateClass: '',
-        location: schedule.location,
         raw: {
-          class: schedule.raw['class'],
+          class: schedule.raw.class,
         },
-        state: schedule.state,
         color: '#474647',
         bgColor: '#9ed2bf',
         dragBgColor: '#daece5',
         borderColor: '#daece5',
       };
     }
-    // console.log(schedule.start);
-    // console.log(schedule2.start);
+
+    // == add the new plant to reducer (semi or plant)
     newPlant(schedule);
+    // == save new plant in db and add new plant to userPlants
     addPlant();
+    // == add the new plant to reducer (harvest)
     newPlant(schedule2);
+    // == save new plant in db and add new plant to userPlants
     addPlant();
   }, []);
 
+   // == this method will become a prop in Calendar component
+  // == method to delete plant schedule selected
   const onBeforeDeleteSchedule = useCallback((res) => {
-    console.log('res', res);
-
-    // const { id, calendarId } = res.schedule;
-    // calendarRef.current.calendarInst.deleteSchedule(id, calendarId);
-    // console.log('res.schedule component', res.schedule);
-    deletePlant(res.plantSelected);
+     // == delete plant selected
+     deletePlant(res); 
   }, []);
 
+  // == this method will become a prop in Calendar component
   const onBeforeUpdateSchedule = useCallback((e) => {
     console.log(e);
-
+    // TODO : update schedule of plant
     // const { schedule, changes } = e;
 
     // calendarRef.current.calendarInst.updateSchedule(
-    //   schedule.id,
-    //   schedule.calendarId,
-    //   changes,
-    // );
+    
   }, []);
   return (
     <div className="userCalendar">
@@ -263,8 +247,7 @@ const UserCalendar = ({
         </div>
       </div>
       <Calendar
-        // == I put key here for new render
-        // == ref to current calendar ?
+        // == ref to current calendar
         ref={calendarRef}
         // == view monthly
         view={view}
@@ -279,10 +262,11 @@ const UserCalendar = ({
         schedules={userPlants}
         // == plants calendars data
         calendars={plantsCalendars}
-        // == possible or not to click on calendar or schedules (boolean)
+        // == calendar is read only
         isReadOnly={isReadOnly}
-        useCreationPopup={true}
-        useDetailPopup={true}
+        // == use default popup toas ui calendar
+        useCreationPopup
+        useDetailPopup
         onClickSchedule={onClickSchedule}
         onBeforeCreateSchedule={onBeforeCreateSchedule}
         onBeforeDeleteSchedule={onBeforeDeleteSchedule}
@@ -298,11 +282,13 @@ UserCalendar.propTypes = {
   startDayOfWeek: PropTypes.number.isRequired,
   isReadOnly: PropTypes.bool.isRequired,
   myTheme: PropTypes.object.isRequired,
-  // userPlants: PropTypes.array.isRequired,
   plantsCalendars: PropTypes.array.isRequired,
   addPlant: PropTypes.func.isRequired,
   fetchUserPlants: PropTypes.func.isRequired,
   newPlant: PropTypes.func.isRequired,
+  userPlants: PropTypes.array.isRequired,
+  deletePlant: PropTypes.func.isRequired,
+  selectPlant: PropTypes.func.isRequired,
 };
 
 // == Export

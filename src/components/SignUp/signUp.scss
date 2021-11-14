@@ -1,8 +1,8 @@
 @use 'src/styles/vars';
 
-.signUp{
- 
-  .signUp-form{
+.signUp {
+
+  .signUp-form {
     background-color: vars.$green;
     border-radius: 2em;
     padding-top: 1em;
@@ -11,8 +11,12 @@
     margin: auto;
     flex-direction: column;
     display: flex;
-    
-    .signUp-submit{
+   
+    .error {
+      font-size: 0.80em;
+      color:red;
+    }
+    .signUp-submit {
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -22,47 +26,70 @@
       background-color: vars.$lightOrange;
       width: 10em;
     }
-    
-  }
 
-  h1 + h4 {
+    .connect-submit {
+      color: vars.$black;
+      border: vars.$black solid 1px;
+      border-radius: 5px;
+      padding: 1rem;
+      margin: auto;
+      margin-top: 1em;
+      font-size: 1.2em;
+      background-color: transparent;
+      width: 10em;
+      &:hover {
+        color: #fff;
+        border: none;
+        background-color: vars.$lightOrange;
+      }
+    }
+    a {
+      color: vars.$black;
+    }
+  }
+  h1+h4 {
     font-weight: vars.$fwLight;
   }
-  
+
   .connect-submit {
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      padding: 1rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: auto;
+    font-size: 1.2em;
+    background-color: vars.$lightOrange;
+    width: 10em;
+
+    &:hover {
+      color: vars.$black;
+      border: vars.$black solid 1px;
+      background-color: transparent;
+    }
+    a {
+      color: vars.$black;
+    }
+  }
+
+  @media(min-width:600px) {
+    .buttons-group {
+      display: flex;
       margin: auto;
-      font-size: 1.2em;
-      background-color: vars.$lightOrange;
-      width: 10em;
 
-      &:hover {
-        color: vars.$black;
-        border: vars.$black solid 1px;
-        background-color: transparent;
-      }
-
-      a {
-        color: vars.$black;
+      .connect-submit {
+        margin-bottom: 1em;
+        margin-left: 1rem;
       }
     }
-
-    .container-jardinier {
-      // background-color: vars.$lightOrange;
-      // border-radius: 10px;
-      // width: 300px;
-      // text-align: center;
-      margin: auto;
-      // padding: 10px;
-
-  .jardiniers {
-    width: 250px;
-    border-radius: 10px;
-    margin-top: 50px;
   }
-}
-    
+
+  .container-jardinier {
+    margin: auto;
+
+    .jardiniers {
+      width: 250px;
+      border-radius: 10px;
+      margin-top: 50px;
+    }
+  }
 }

@@ -15,10 +15,8 @@ const mapStateToProps = (state) => ({
   startDayOfWeek: state.userCalendar.startDayOfWeek,
   myTheme: state.userCalendar.myTheme,
   userPlants: state.userCalendar.userPlants,
-  // plant: state.userCalendar.plant,
   plantsCalendars: state.userCalendar.plantsCalendars,
   isReadOnly: state.userCalendar.isReadOnly,
-  plantToRemove: state.userCalendar.plantToRemove,
 });
 
 // === mapDispatchToProps

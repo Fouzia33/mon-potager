@@ -16,95 +16,116 @@ const SignUp = ({
   changeFieldValue,
   handleSubmit,
   isSigned,
-}) => (
-  <div className="signUp">
-    {!isSigned
-      ? (
-        <form
-          className="signUp-form"
-          onSubmit={(event) => {
-            event.preventDefault();
-            // console.log('soumission du formulaire');
-            handleSubmit();
-          }}
-        >
-          <Field
-            identifier="username"
-            placeholder="Nom d'utilisateur"
-            label="Votre nom d'utilisateur"
-            changeField={(identifier, newValue) => {
-              changeFieldValue(identifier, newValue);
+}) => {
+  let errors = '';
+  if (password !== confirmPassword) {
+    errors = 'Saisissez le même mot de passe';
+  }
+
+  return (
+    <div className="signUp">
+      {!isSigned
+        ? (
+          <form
+            className="signUp-form"
+            onSubmit={(event) => {
+              event.preventDefault();
+              if (errors.length === 0) {
+                handleSubmit();
+              }
             }}
-            value={username}
-          />
-          <Field
-            identifier="password"
-            placeholder="Mot de passe"
-            label="Votre mot de passe"
-            type="password"
-            changeField={(identifier, newValue) => {
-              changeFieldValue(identifier, newValue);
-            }}
-            value={password}
-          />
-          <Field
-            identifier="confirmPassword"
-            placeholder="Confirmez votre mot de passe"
-            label="Confirmez votre mot de passe"
-            type="password"
-            changeField={(identifier, newValue) => {
-              changeFieldValue(identifier, newValue);
-            }}
-            value={confirmPassword}
-          />
-          <Field
-            identifier="email"
-            placeholder="Votre email"
-            label="Votre email"
-            type="email"
-            changeField={(identifier, newValue) => {
-              changeFieldValue(identifier, newValue);
-            }}
-            value={email}
-          />
-          <Field
-            identifier="region"
-            placeholder="Votre région"
-            label="Votre région"
-            type="region"
-            changeField={(identifier, newValue) => {
-              changeFieldValue(identifier, newValue);
-            }}
-            value={region}
-          />
-          <button
-            type="submit"
-            className="signUp-submit"
           >
-            Valider
-          </button>
-        </form>
-      )
-      : (
-        <>
-          <h1>Bienvenue dans le club des apprentis jardiniers!</h1>
-          <h4>Tu peux te connecter dès maintenant et commencer ton propre calendrier.</h4>
-          <button
-            type="submit"
-            className="connect-submit"
-          > <a href="/connexion">Me connecter</a>
-          </button>
-          <div className="container-jardinier">
-            <img
-              src={jardiniers3}
-              alt="jardiniers"
-              className="jardiniers"
+            <Field
+              identifier="username"
+              placeholder="Nom d'utilisateur"
+              label="Votre nom d'utilisateur"
+              changeField={(identifier, newValue) => {
+                changeFieldValue(identifier, newValue);
+              }}
+              value={username}
             />
-          </div>
-        </>
-      )}
-  </div>
-);
+            <Field
+              identifier="password"
+              placeholder="Mot de passe"
+              label="Votre mot de passe"
+              type="password"
+              changeField={(identifier, newValue) => {
+                changeFieldValue(identifier, newValue);
+              }}
+              value={password}
+            />
+            <Field
+              identifier="confirmPassword"
+              placeholder="Confirmez votre mot de passe"
+              label="Confirmez votre mot de passe"
+              type="password"
+              changeField={(identifier, newValue) => {
+                changeFieldValue(identifier, newValue);
+              }}
+              value={confirmPassword}
+            />
+            {errors
+              && (
+                <span className="error">{errors}</span>
+              )}
+            <Field
+              identifier="email"
+              placeholder="Votre email"
+              label="Votre email"
+              type="email"
+              changeField={(identifier, newValue) => {
+                changeFieldValue(identifier, newValue);
+              }}
+              value={email}
+            />
+            <Field
+              identifier="region"
+              placeholder="Votre région"
+              label="Votre région"
+              type="region"
+              changeField={(identifier, newValue) => {
+                changeFieldValue(identifier, newValue);
+              }}
+              value={region}
+            />
+            <div className="buttons-group">
+              <button
+                type="submit"
+                className="signUp-submit"
+              >
+                Valider
+              </button>
+              <button
+                type="button"
+                className="connect-submit"
+              >
+                <a href="/connexion" className="connect-link">Se connecter</a>
+              </button>
+            </div>
+
+          </form>
+        )
+        : (
+          <>
+            <h1>Bienvenue dans le club des apprentis jardiniers!</h1>
+            <h4>Tu peux te connecter dès maintenant et commencer ton propre calendrier.</h4>
+            <button
+              type="submit"
+              className="connect-submit"
+            > <a href="/connexion">Me connecter</a>
+            </button>
+            <div className="container-jardinier">
+              <img
+                src={jardiniers3}
+                alt="jardiniers"
+                className="jardiniers"
+              />
+            </div>
+          </>
+        )}
+    </div>
+  );
+};
 
 SignUp.propTypes = {
   username: PropTypes.string.isRequired,

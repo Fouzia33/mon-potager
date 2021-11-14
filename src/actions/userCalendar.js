@@ -1,12 +1,33 @@
 // === action types
-// == to add user plant schedule in state
+
+// == to create user plant schedule
+// == (type in userCalendarReducer and creator in UserCalendar container)
 export const NEW_PLANT = 'NEW_PLANT';
+
+// == post the new plant to middleware
+// == (type in authMiddleware and creator in UserCalendar container)
 export const ADD_PLANT = 'ADD_PLANT';
+
+// == add new plant to userPlants in reducer
+// == (type in userCalendarReducer and creator in authMiddleware)
 export const SAVE_NEW_PLANT = 'SAVE_NEW_PLANT';
+
+// == plant selected by click
+// == (type in userCalendarReducer and creator in UserCalendar container)
 export const SELECT_PLANT = 'SELECT_PLANT';
+
+// == info plant selected to delete sent to api and dispatch to reducer
+// == (type in userCalendarReducer and creator in authMiddleware)
 export const PLANT_TO_DELETE = 'PLANT_TO_DELETE';
+
+// == (type in authMiddleware and creator in UserCalendar container)
 export const DELETE_PLANT = 'DELETE_PLANT';
+
+// == load userPlants
+// == (type in authMiddlewanre and creator in UserCalendar container)
 export const FETCH_USER_PLANTS = 'FETCH_USER_PLANTS';
+
+// == (type in userCalendarReducer and creator in authMiddleware)
 export const SAVE_USER_PLANTS = 'SAVE_USER_PLANTS';
 
 // === action creators

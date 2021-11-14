@@ -9,6 +9,7 @@ import { getPlantsList } from 'src/actions/plantsList';
 // === mapStateToProps
 const mapStateToProps = (state) => ({
   plants: state.plants.plants,
+  loading: state.plants.loading,
 });
 
 // === mapDispatchToProps

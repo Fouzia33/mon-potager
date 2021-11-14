@@ -12,11 +12,11 @@ const QuiSommesNous = () => (
       <h1> La team de jardiniers</h1>
       <p>
         C'est l'histoire d'une idée qui a pris racine au
-        seins d'une équipe en reconversion professionnelle ! <br />
+        sein d'une équipe en reconversion professionnelle ! <br />
         Claudia, Fouzia, Jonathan, Mathieu et Paul, <br />
-        on voulu mettre en pratique leurs connaissances
-        fraichement acquises durant leur formation chez O'clock
-        au services des jardiniers (novices ou confirmés), afin de leur proposer un outils
+        ont voulu mettre en pratique leurs connaissances
+        fraîchement acquises durant leur formation chez O'clock
+        au service des jardiniers (novices ou confirmés), afin de leur proposer un outil
         de gestion pour leur potager.
       </p>
     </div>

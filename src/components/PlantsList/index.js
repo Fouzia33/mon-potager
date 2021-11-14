@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 
 import './plantsList.scss';
+import Loader from 'src/components/Loader';
 
 function createMarkup(data) {
   return { __html: DOMPurify.sanitize(data) };
 }
 
-const PlantsList = ({ plants, getPlantsList }) => {
-  // console.log(plants);
+const PlantsList = ({ plants, getPlantsList, loading }) => {
   useEffect(() => {
     getPlantsList();
   }, []);
 
   return (
     <div className="accordion">
+      {loading && <Loader />}
       {plants.map((plant) => {
         let semis = plant.periode_regions['debut_semi-month_aquitaine']?.[0];
         let planting = plant.periode_regions['debut_plant-month_aquitaine']?.[0];
@@ -30,7 +31,6 @@ const PlantsList = ({ plants, getPlantsList }) => {
         if (plant.periode_regions['debut_recolte-month_aquitaine']?.[0] !== plant.periode_regions['fin_recolte-month_aquitaine']?.[0]) {
           harvest = `${plant.periode_regions['debut_recolte-month_aquitaine']?.[0]} à ${plant.periode_regions['fin_recolte-month_aquitaine']?.[0]}`;
         }
-
         return (
           <React.Fragment key={plant.id}>
             <input type="radio" name="select" className="accordion-select" />
@@ -64,7 +64,7 @@ const PlantsList = ({ plants, getPlantsList }) => {
                       Récolte: {harvest}
                     </p>
                   )}
-
+                  <h4 className="description">Description</h4>
                   <p dangerouslySetInnerHTML={createMarkup(plant.content.rendered)} />
                 </div>
               </div>
@@ -88,6 +88,7 @@ PlantsList.propTypes = {
     }).isRequired,
   ).isRequired,
   getPlantsList: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default PlantsList;

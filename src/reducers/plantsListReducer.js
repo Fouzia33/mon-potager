@@ -5,6 +5,7 @@ import {
 
 const initialState = {
   plants: [],
+  loading: true,
 };
 
 function plantsListReducer(state = initialState, action = {}) {
@@ -13,6 +14,7 @@ function plantsListReducer(state = initialState, action = {}) {
       return {
         ...state,
         plants: action.plants,
+        loading: false,
       };
     default:
       return state;

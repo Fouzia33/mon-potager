@@ -1,21 +1,22 @@
 // === action types
-// == to change plantsSchedules.isVisible to true or false
-export const CHANGE_IS_VISIBLE = 'CHANGE_IS_VISIBLE';
+
+// == to display plants when you select region
+// == (type in visitorCalendarReducer and creator in VisitorCalendar container)
 export const DISPLAY_PLANTS = 'DISPLAY_PLANTS';
-// == to load and save plants from api
+
+// == load plants from api and save plants in reducer
+// == (type in plantsMiddleware and creator in App container)
 export const FETCH_PLANTS = 'FETCH_PLANTS';
+
+// == (type in visitorCalendarReducer and creator in plantsMiddleware)
 export const SAVE_PLANTS = 'SAVE_PLANTS';
-// == to keep selected region in state
+
+// == send selected region to reducer
+// == (type in visitorCalendar and creator in VisitorCalendar container)
 export const SELECTED_REGION = 'SELECTED_REGION';
 
 // == toggle to change display
 export const CHANGE_CALENDAR_MODE = 'CHANGE_CALENDAR_MODE';
-
-// === action creators
-export const changeIsVisible = (value) => ({
-  type: CHANGE_IS_VISIBLE,
-  value,
-});
 
 export const displayPlants = () => ({
   type: DISPLAY_PLANTS,
